@@ -1,0 +1,138 @@
+@color: #333;
+@color-borer: #ddd;
+.tier, .tier_s {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tier {
+  // display: none;
+  position: fixed;
+  z-index: 19900708;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.tier_s {
+  position: absolute;
+  opacity: 0.5;
+  background:#000;
+}
+
+.tier_dark {
+  .tier_s {
+    opacity: 0;
+  }
+  .tier_m {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+  }
+}
+
+.tier_m {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 200px;
+  max-width: 85%;
+  opacity: 0;
+  transition: opacity .5s;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0.5rem;
+  display: inline-table;
+  color: @color;
+  font-size: 1.3rem;
+  line-height: 3rem;
+  text-align: center;
+}
+
+.tier_h {
+  padding: 0 1rem;
+  font-weight: bold;
+  overflow: hidden;
+  line-height: 4rem;
+  max-height: 3.5rem;
+  min-height: 1.5rem;
+  margin-bottom: -1.5rem;
+}
+
+.tier_c {
+  padding: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+.tier_f {
+  display: flex;
+  span {
+    display: block;
+    flex: 1;
+    user-select: none;
+    box-shadow: -1px 0 0 @color-borer, 0 -1px 0 @color-borer;
+    cursor: pointer;
+    &:first-child {
+      box-shadow: 0 -1px 0 @color-borer;
+    }
+    &:active {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+.tier_l {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10rem;
+  height: 10rem;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 0.5rem;
+
+  ul {
+    height: 6rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      position: absolute;
+      top: 35%;
+      left:50%;
+      margin: 0;
+      padding: 0;
+      opacity: 0.25;
+      i {
+        position: absolute;
+        width: 1rem;
+        height: 0.25rem;
+        margin: 0;
+        padding: 0;
+        background: rgb(209, 209, 213);
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px;
+        border-radius: 1px;
+        transform-origin: left 50% 0px;
+      }
+
+      @keyframes tier-loading {
+        0% { opacity: 0.25; }
+        1% { opacity: 1; }
+        60% { opacity: 0.25; }
+        100% { opacity: 0.25; }
+      }
+    }
+  }
+
+  span {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: #fff;
+    display: block;
+    line-height: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}

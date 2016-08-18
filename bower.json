@@ -1,0 +1,22 @@
+{
+  "name": "tier",
+  "version" : "v1.0.0",
+  "description": "移动端弹框",
+  "main": "tier.js",
+  "keywords": [
+    "tier",
+    "javascript"
+  ],
+  "authors": [
+    "meglad <wangyu5577@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/meglad/tier",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,27 @@
+<!-- tier -->
+<div class="tier">
+  <div class="tier_s #{this.class.shade}" style="!#{this.style.shade}"></div>
+  if(!this.type){
+  <div class="tier_m #{this.class.main}" style="!#{this.style.main}">
+    <div class="tier_h #{this.class.title}" style="!#{this.style.title}">#{this.title}</div>
+    <div class="tier_c #{this.class.content}" style="!#{this.style.content}">!#{this.content}</div>
+    <div class="tier_f">
+      for(var i in this.btn){
+      <span class="#{this.class.btn[i]||''}" style="!#{this.style.btn[i]||''}" tier-index="#{i}">#{this.btn[i]}</span>
+      }
+    </div>
+  </div>
+  }else{
+  <div class="tier_l">
+    <ul>
+      for(var i=12;i>0;i--){
+      <li style="-webkit-animation:tier-loading 1.1s linear #{i*0.1}s infinite;animation:tier-loading 1.1s linear #{i*0.1}s infinite">
+        <i style="-webkit-transform:rotate(#{i*30}deg) translate(0.8rem,0px);transform: rotate(#{i*30}deg) translate(0.8rem,0px)"></i>
+      </li>
+      }
+    </ul>
+    <span>#{this.content||'数据加载'}</span>
+  </div>
+  }
+</div>
+<!-- /tier -->

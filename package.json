@@ -1,0 +1,34 @@
+{
+  "name": "tier",
+  "version": "1.0.0",
+  "description": "移动端弹框",
+  "author": "@meglad",
+  "license": "MIT",
+  "keywords": [
+    "tier",
+    "javascript"
+  ],
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "css-loader": "^0.23.1",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^4.1.0",
+    "gulp-open": "^2.0.0",
+    "gulp-webpack": "^1.5.0",
+    "jhtmls-loader": "^0.2.0",
+    "less-loader": "^2.2.3"
+  },
+  "dependencies": {},
+  "scripts": {
+    "test": "",
+    "dist": "gulp dist",
+    "dev": "gulp"
+  },
+  "bugs": {
+    "url": "https://github.com/meGlad/tier/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:meglad/tier.git"
+  }
+}

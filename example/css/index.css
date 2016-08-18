@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 12px;
+  min-width: 300px;
+  margin-top: 3rem;
+}
+
+b, a, h2 {
+  display: block;
+  width: 80%;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  color: #fff;
+  background: #f66;
+  border-radius: 3px;
+  margin: 1rem auto;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+b:active, a:active{
+  background: #f99;
+}
+
+h2 {
+  color: #f66;
+  background: #fff;
+}
+
+input {
+  display: block;
+  width: 80%;
+  height: 3rem;
+  border-radius: 3px;
+  border: 1px solid #f66;
+  margin: 1rem auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.style_main {
+  background: rgba(0, 255, 255, 0.5);
+  color: #f0f;
+}
