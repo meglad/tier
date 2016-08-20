@@ -1,3 +1,12 @@
+(function() {
+  var percentage = 24 / 720; // 页面 720px 宽度 REM 基准值为 24px
+  var rootElement = document.documentElement;
+  function resize() {
+    rootElement.style.fontSize = (rootElement.clientWidth * percentage).toFixed(2) + "px";
+  }
+  resize();
+  window.addEventListener("resize", resize)
+})();
 document.body.addEventListener('touchend', function (e) {
   var self = e.target;
   switch (self.className) {
@@ -63,8 +72,8 @@ document.body.addEventListener('touchend', function (e) {
 
       tier.open({
         title: '~ 提示 ~',
-        content: '是否确认信息吗？',
-        btn: ['确定', '去购买', '取消'],
+        content: '是否确定?',
+        btn: ['确定', '购买', '取消'],
         class: {
           main: 'style_main'
         },
@@ -86,12 +95,18 @@ document.body.addEventListener('touchend', function (e) {
         style: {
           shade: "opacity:0"
         },
-        shadeClose: true
+        shadeClose: true,
+        end: function () {
+          tier.dark({
+            content: '弹框销毁, end事件触发',
+            delay: 1000
+          })
+        }
       });
 
       break;
     case 'btn-open-one':
-
+      tier.load();
       tier.one({
         content: '单一模式',
         shadeClose: true

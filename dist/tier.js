@@ -90,9 +90,12 @@
 	    opts = util.extend(option, opts);
 
 	    typeof opts.start === 'function' && opts.start(index);
+	    typeof opts.end === 'function' && (tierEndFn[index] = opts.end);
 	    var shadeClose = opts.shadeClose || false;
 	    var btnClose = opts.btnClose || true;
 	    var currentRender = opts.render || render;
+
+
 
 	    var $div = tierList[index] = util.create('body', 'div', currentRender(opts), true);
 	    $div.id = exportName + index;
@@ -166,6 +169,7 @@
 	  };
 	  // 加载模式
 	  exports.load = function (opts) {
+	    opts = opts || {};
 	    opts.type = 1;
 	    return _open(opts);
 	  };
@@ -176,7 +180,7 @@
 	  };
 	  // 黑暗模式
 	  exports.dark = function (opts) {
-	    if(opts.mode == "one") this.close();
+	    if (opts.mode == "one") this.close();
 	    opts.mode = "dark";
 	    return _open(opts);
 	  };
@@ -249,7 +253,7 @@
 
 
 	// module
-	exports.push([module.id, ".tier,\n.tier_s {\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n.tier {\n  position: fixed;\n  z-index: 19900708;\n  pointer-events: auto;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n.tier_s {\n  position: absolute;\n  opacity: 0.5;\n  background: #000;\n}\n.tier_dark .tier_s {\n  opacity: 0;\n}\n.tier_dark .tier_m {\n  background: rgba(0, 0, 0, 0.8);\n  color: #fff;\n}\n.tier_m {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n  transform: translate(-50%, -50%);\n  min-width: 200px;\n  max-width: 85%;\n  opacity: 0;\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n  background: rgba(255, 255, 255, 0.95);\n  border-radius: 0.5rem;\n  display: inline-table;\n  color: #333;\n  font-size: 1.3rem;\n  line-height: 3rem;\n  text-align: center;\n}\n.tier_h {\n  padding: 0 1rem;\n  font-weight: bold;\n  overflow: hidden;\n  line-height: 4rem;\n  max-height: 3.5rem;\n  min-height: 1.5rem;\n  margin-bottom: -1.5rem;\n}\n.tier_c {\n  padding: 1.5rem;\n  font-size: 1.25rem;\n  line-height: 2rem;\n}\n.tier_f {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.tier_f span {\n  display: block;\n  -webkit-box-flex: 1;\n  -ms-flex: 1;\n  flex: 1;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  box-shadow: -1px 0 0 #ddd, 0 -1px 0 #ddd;\n  cursor: pointer;\n}\n.tier_f span:first-child {\n  box-shadow: 0 -1px 0 #ddd;\n}\n.tier_f span:active {\n  background: rgba(0, 0, 0, 0.1);\n}\n.tier_l {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n  transform: translate(-50%, -50%);\n  width: 10rem;\n  height: 10rem;\n  background: rgba(0, 0, 0, 0.7);\n  border-radius: 0.5rem;\n}\n.tier_l ul {\n  height: 6rem;\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.tier_l ul li {\n  position: absolute;\n  top: 35%;\n  left: 50%;\n  margin: 0;\n  padding: 0;\n  opacity: 0.25;\n}\n.tier_l ul li i {\n  position: absolute;\n  width: 1rem;\n  height: 0.25rem;\n  margin: 0;\n  padding: 0;\n  background: #d1d1d5;\n  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px;\n  border-radius: 1px;\n  -webkit-transform-origin: left 50% 0px;\n  transform-origin: left 50% 0px;\n}\n@-webkit-keyframes tier-loading {\n  0% {\n    opacity: 0.25;\n  }\n  1% {\n    opacity: 1;\n  }\n  60% {\n    opacity: 0.25;\n  }\n  100% {\n    opacity: 0.25;\n  }\n}\n@keyframes tier-loading {\n  0% {\n    opacity: 0.25;\n  }\n  1% {\n    opacity: 1;\n  }\n  60% {\n    opacity: 0.25;\n  }\n  100% {\n    opacity: 0.25;\n  }\n}\n.tier_l span {\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  color: #fff;\n  display: block;\n  line-height: 3rem;\n  height: 3rem;\n  font-size: 1.2rem;\n  text-align: center;\n}\n", ""]);
+	exports.push([module.id, ".tier,\n.tier_s {\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n.tier {\n  position: fixed;\n  z-index: 19900708;\n  pointer-events: auto;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n.tier_s {\n  position: absolute;\n  opacity: 0.5;\n  background: #000;\n}\n.tier_dark .tier_s {\n  opacity: 0;\n}\n.tier_dark .tier_m {\n  background: rgba(0, 0, 0, 0.8);\n  color: #fff;\n}\n.tier_m {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n  transform: translate(-50%, -50%);\n  min-width: 150px;\n  max-width: 85%;\n  opacity: 0;\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n  background: rgba(255, 255, 255, 0.95);\n  border-radius: 0.5rem;\n  display: inline-table;\n  color: #333;\n  font-size: 1.3rem;\n  line-height: 3rem;\n  text-align: center;\n}\n.tier_h {\n  padding: 0 1rem;\n  font-weight: bold;\n  overflow: hidden;\n  line-height: 4rem;\n  max-height: 3.5rem;\n  min-height: 1.5rem;\n  margin-bottom: -1.5rem;\n}\n.tier_c {\n  padding: 1.5rem;\n  font-size: 1.25rem;\n  line-height: 2rem;\n}\n.tier_f {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.tier_f span {\n  display: block;\n  -webkit-box-flex: 1;\n  -ms-flex: 1;\n  flex: 1;\n  padding: 0 0.5rem;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  box-shadow: -1px 0 0 #ddd, 0 -1px 0 #ddd;\n  cursor: pointer;\n}\n.tier_f span:first-child {\n  box-shadow: 0 -1px 0 #ddd;\n}\n.tier_f span:active {\n  background: rgba(0, 0, 0, 0.1);\n}\n.tier_l {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n  transform: translate(-50%, -50%);\n  width: 9rem;\n  height: 8rem;\n  background: rgba(0, 0, 0, 0.6);\n  border-radius: 0.5rem;\n}\n.tier_l ul {\n  height: 6rem;\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.tier_l ul li {\n  position: absolute;\n  top: 35%;\n  left: 50%;\n  margin: 0;\n  padding: 0;\n  opacity: 0.25;\n}\n.tier_l ul li i {\n  position: absolute;\n  width: 1rem;\n  height: 0.25rem;\n  margin: 0;\n  padding: 0;\n  background: #d1d1d5;\n  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px;\n  border-radius: 1px;\n  -webkit-transform-origin: left 50% 0px;\n  transform-origin: left 50% 0px;\n}\n@-webkit-keyframes tier-loading {\n  0% {\n    opacity: 0.25;\n  }\n  1% {\n    opacity: 1;\n  }\n  60% {\n    opacity: 0.25;\n  }\n  100% {\n    opacity: 0.25;\n  }\n}\n@keyframes tier-loading {\n  0% {\n    opacity: 0.25;\n  }\n  1% {\n    opacity: 1;\n  }\n  60% {\n    opacity: 0.25;\n  }\n  100% {\n    opacity: 0.25;\n  }\n}\n.tier_l span {\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  color: #fff;\n  display: block;\n  line-height: 1rem;\n  height: 1rem;\n  font-size: 1.2rem;\n  text-align: center;\n}\n", ""]);
 
 	// exports
 
@@ -317,32 +321,32 @@
 	var require;var exports = null;        var htmlEncodeDict = {            '"': 'quot',            '<': 'lt',            '>': 'gt',            '&': 'amp',            ' ': 'nbsp'        };    var build = function anonymous(_output_,_encode_,helper,jhtmls,require
 	/**/) {
 
-	_output_.push("<!-- tier -->");
-	_output_.push("<div class=\"tier\">");
-	_output_.push("  <div class=\"tier_s ",_encode_(this.class.shade),"\" style=\"",(this.style.shade),"\"></div>");
+	_output_.push("<!-- tier -->","\n");
+	_output_.push("<div class=\"tier\">","\n");
+	_output_.push("  <div class=\"tier_s ",_encode_(this.class.shade),"\" style=\"",(this.style.shade),"\"></div>","\n");
 	  if(!this.type){
-	_output_.push("  <div class=\"tier_m ",_encode_(this.class.main),"\" style=\"",(this.style.main),"\">");
-	_output_.push("    <div class=\"tier_h ",_encode_(this.class.title),"\" style=\"",(this.style.title),"\">",_encode_(this.title),"</div>");
-	_output_.push("    <div class=\"tier_c ",_encode_(this.class.content),"\" style=\"",(this.style.content),"\">",(this.content),"</div>");
-	_output_.push("    <div class=\"tier_f\">");
+	_output_.push("  <div class=\"tier_m ",_encode_(this.class.main),"\" style=\"",(this.style.main),"\">","\n");
+	_output_.push("    <div class=\"tier_h ",_encode_(this.class.title),"\" style=\"",(this.style.title),"\">",_encode_(this.title),"</div>","\n");
+	_output_.push("    <div class=\"tier_c ",_encode_(this.class.content),"\" style=\"",(this.style.content),"\">",(this.content),"</div>","\n");
+	_output_.push("    <div class=\"tier_f\">","\n");
 	      for(var i in this.btn){
-	_output_.push("      <span class=\"",_encode_(this.class.btn[i]||''),"\" style=\"",(this.style.btn[i]||''),"\" tier-index=\"",_encode_(i),"\">",_encode_(this.btn[i]),"</span>");
+	_output_.push("      <span class=\"",_encode_(this.class.btn[i]||''),"\" style=\"",(this.style.btn[i]||''),"\" tier-index=\"",_encode_(i),"\">",_encode_(this.btn[i]),"</span>","\n");
 	      }
-	_output_.push("    </div>");
-	_output_.push("  </div>");
+	_output_.push("    </div>","\n");
+	_output_.push("  </div>","\n");
 	  }else{
-	_output_.push("  <div class=\"tier_l\">");
-	_output_.push("    <ul>");
+	_output_.push("  <div class=\"tier_l\">","\n");
+	_output_.push("    <ul>","\n");
 	      for(var i=12;i>0;i--){
-	_output_.push("      <li style=\"-webkit-animation:tier-loading 1.1s linear ",_encode_(i*0.1),"s infinite;animation:tier-loading 1.1s linear ",_encode_(i*0.1),"s infinite\">");
-	_output_.push("        <i style=\"-webkit-transform:rotate(",_encode_(i*30),"deg) translate(0.8rem,0px);transform: rotate(",_encode_(i*30),"deg) translate(0.8rem,0px)\"></i>");
-	_output_.push("      </li>");
+	_output_.push("      <li style=\"-webkit-animation:tier-loading 1.1s linear ",_encode_(i*0.1),"s infinite;animation:tier-loading 1.1s linear ",_encode_(i*0.1),"s infinite\">","\n");
+	_output_.push("        <i style=\"-webkit-transform:rotate(",_encode_(i*30),"deg) translate(0.8rem,0px);transform: rotate(",_encode_(i*30),"deg) translate(0.8rem,0px)\"></i>","\n");
+	_output_.push("      </li>","\n");
 	      }
-	_output_.push("    </ul>");
-	_output_.push("    <span>",_encode_(this.content||'数据加载'),"</span>");
-	_output_.push("  </div>");
+	_output_.push("    </ul>","\n");
+	_output_.push("    <span class=\"",_encode_(this.class.content),"\" style=\"",(this.style.content),"\">",_encode_(this.content||'数据加载'),"</span>","\n");
+	_output_.push("  </div>","\n");
 	  }
-	_output_.push("</div>");
+	_output_.push("</div>","\n");
 	_output_.push("<!-- /tier -->");
 	}
 	;function encodeHTML(text) {

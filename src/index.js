@@ -44,9 +44,12 @@
     opts = util.extend(option, opts);
 
     typeof opts.start === 'function' && opts.start(index);
+    typeof opts.end === 'function' && (tierEndFn[index] = opts.end);
     var shadeClose = opts.shadeClose || false;
     var btnClose = opts.btnClose || true;
     var currentRender = opts.render || render;
+
+
 
     var $div = tierList[index] = util.create('body', 'div', currentRender(opts), true);
     $div.id = exportName + index;
@@ -120,6 +123,7 @@
   };
   // 加载模式
   exports.load = function (opts) {
+    opts = opts || {};
     opts.type = 1;
     return _open(opts);
   };
@@ -130,7 +134,7 @@
   };
   // 黑暗模式
   exports.dark = function (opts) {
-    if(opts.mode == "one") this.close();
+    if (opts.mode == "one") this.close();
     opts.mode = "dark";
     return _open(opts);
   };
