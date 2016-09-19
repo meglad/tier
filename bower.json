@@ -1,6 +1,6 @@
 {
   "name": "tier",
-  "version" : "v1.0.0",
+  "version" : "1.0.0",
   "description": "移动端弹框",
   "main": "tier.js",
   "keywords": [
@@ -16,7 +16,11 @@
     "**/.*",
     "node_modules",
     "bower_components",
+    "example",
+    "dist",
+    "src",
     "test",
-    "tests"
+    "webpack.config.js",
+    "gulpfile.js"
   ]
 }

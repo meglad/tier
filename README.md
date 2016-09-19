@@ -5,6 +5,10 @@ tier
 
 一个针对移动端的弹框
 
+## 安装
+
+> $ bower install tier
+
 ## #参数 option
 ```js
 var option = {
