@@ -180,6 +180,7 @@
 	  };
 	  // 黑暗模式
 	  exports.dark = function (opts) {
+	    opts = opts || {};
 	    if (opts.mode == "one") this.close();
 	    opts.mode = "dark";
 	    return _open(opts);
@@ -321,32 +322,32 @@
 	var require;var exports = null;        var htmlEncodeDict = {            '"': 'quot',            '<': 'lt',            '>': 'gt',            '&': 'amp',            ' ': 'nbsp'        };    var build = function anonymous(_output_,_encode_,helper,jhtmls,require
 	/**/) {
 
-	_output_.push("<!-- tier -->","\n");
-	_output_.push("<div class=\"tier\">","\n");
-	_output_.push("  <div class=\"tier_s ",_encode_(this.class.shade),"\" style=\"",(this.style.shade),"\"></div>","\n");
+	_output_.push("<!-- tier -->");
+	_output_.push("<div class=\"tier\">");
+	_output_.push("  <div class=\"tier_s ",_encode_(this.class.shade),"\" style=\"",(this.style.shade),"\"></div>");
 	  if(!this.type){
-	_output_.push("  <div class=\"tier_m ",_encode_(this.class.main),"\" style=\"",(this.style.main),"\">","\n");
-	_output_.push("    <div class=\"tier_h ",_encode_(this.class.title),"\" style=\"",(this.style.title),"\">",_encode_(this.title),"</div>","\n");
-	_output_.push("    <div class=\"tier_c ",_encode_(this.class.content),"\" style=\"",(this.style.content),"\">",(this.content),"</div>","\n");
-	_output_.push("    <div class=\"tier_f\">","\n");
+	_output_.push("  <div class=\"tier_m ",_encode_(this.class.main),"\" style=\"",(this.style.main),"\">");
+	_output_.push("    <div class=\"tier_h ",_encode_(this.class.title),"\" style=\"",(this.style.title),"\">",_encode_(this.title),"</div>");
+	_output_.push("    <div class=\"tier_c ",_encode_(this.class.content),"\" style=\"",(this.style.content),"\">",(this.content),"</div>");
+	_output_.push("    <div class=\"tier_f\">");
 	      for(var i in this.btn){
-	_output_.push("      <span class=\"",_encode_(this.class.btn[i]||''),"\" style=\"",(this.style.btn[i]||''),"\" tier-index=\"",_encode_(i),"\">",_encode_(this.btn[i]),"</span>","\n");
+	_output_.push("      <span class=\"",_encode_(this.class.btn[i]||''),"\" style=\"",(this.style.btn[i]||''),"\" tier-index=\"",_encode_(i),"\">",_encode_(this.btn[i]),"</span>");
 	      }
-	_output_.push("    </div>","\n");
-	_output_.push("  </div>","\n");
+	_output_.push("    </div>");
+	_output_.push("  </div>");
 	  }else{
-	_output_.push("  <div class=\"tier_l\">","\n");
-	_output_.push("    <ul>","\n");
+	_output_.push("  <div class=\"tier_l\">");
+	_output_.push("    <ul>");
 	      for(var i=12;i>0;i--){
-	_output_.push("      <li style=\"-webkit-animation:tier-loading 1.1s linear ",_encode_(i*0.1),"s infinite;animation:tier-loading 1.1s linear ",_encode_(i*0.1),"s infinite\">","\n");
-	_output_.push("        <i style=\"-webkit-transform:rotate(",_encode_(i*30),"deg) translate(0.8rem,0px);transform: rotate(",_encode_(i*30),"deg) translate(0.8rem,0px)\"></i>","\n");
-	_output_.push("      </li>","\n");
+	_output_.push("      <li style=\"-webkit-animation:tier-loading 1.1s linear ",_encode_(i*0.1),"s infinite;animation:tier-loading 1.1s linear ",_encode_(i*0.1),"s infinite\">");
+	_output_.push("        <i style=\"-webkit-transform:rotate(",_encode_(i*30),"deg) translate(0.8rem,0px);transform: rotate(",_encode_(i*30),"deg) translate(0.8rem,0px)\"></i>");
+	_output_.push("      </li>");
 	      }
-	_output_.push("    </ul>","\n");
-	_output_.push("    <span class=\"",_encode_(this.class.content),"\" style=\"",(this.style.content),"\">",_encode_(this.content||'数据加载'),"</span>","\n");
-	_output_.push("  </div>","\n");
+	_output_.push("    </ul>");
+	_output_.push("    <span class=\"",_encode_(this.class.content),"\" style=\"",(this.style.content),"\">",_encode_(this.content||'数据加载'),"</span>");
+	_output_.push("  </div>");
 	  }
-	_output_.push("</div>","\n");
+	_output_.push("</div>");
 	_output_.push("<!-- /tier -->");
 	}
 	;function encodeHTML(text) {

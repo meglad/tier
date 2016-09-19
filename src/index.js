@@ -134,6 +134,7 @@
   };
   // 黑暗模式
   exports.dark = function (opts) {
+    opts = opts || {};
     if (opts.mode == "one") this.close();
     opts.mode = "dark";
     return _open(opts);

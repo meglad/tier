@@ -106,6 +106,8 @@ document.body.addEventListener('touchend', function (e) {
 
       break;
     case 'btn-open-one':
+    
+      tier.dark();
       tier.load();
       tier.one({
         content: '单一模式',
@@ -118,7 +120,7 @@ document.body.addEventListener('touchend', function (e) {
 
       break;
     case 'btn-open-two':
-
+    
       tier.load({
         style: {
           shade: "opacity: 0"
